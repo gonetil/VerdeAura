@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Sale</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ sale.id }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{% if sale.date %}{{ sale.date|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Itemcount</th>
+                <td>{{ sale.itemCount }}</td>
+            </tr>
+            <tr>
+                <th>Amount</th>
+                <td>{{ sale.amount }}</td>
+            </tr>
+            <tr>
+                <th>Comments</th>
+                <td>{{ sale.comments }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('sale_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('sale_edit', { 'id': sale.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

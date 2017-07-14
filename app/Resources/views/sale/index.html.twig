@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Sales list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Date</th>
+                <th>Itemcount</th>
+                <th>Amount</th>
+                <th>Comments</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for sale in sales %}
+            <tr>
+                <td><a href="{{ path('sale_show', { 'id': sale.id }) }}">{{ sale.id }}</a></td>
+                <td>{% if sale.date %}{{ sale.date|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ sale.itemCount }}</td>
+                <td>{{ sale.amount }}</td>
+                <td>{{ sale.comments }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('sale_show', { 'id': sale.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('sale_edit', { 'id': sale.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('sale_new') }}">Create a new sale</a>
+        </li>
+    </ul>
+{% endblock %}
