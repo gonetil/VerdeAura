@@ -1,28 +1,26 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Sales list</h1>
+    <h1>Commonexpenses list</h1>
 
     <table>
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Itemcount</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
-        {% for sale in sales %}
+        {% for commonExpense in commonExpenses %}
             <tr>
-                <td><a href="{{ path('sale_show', { 'id': sale.id }) }}">{{ sale.id }}</a></td>
-                <td>{{ sale.itemCount }}</td>
+                <td><a href="{{ path('commonexpenses_show', { 'id': commonExpense.id }) }}">{{ commonExpense.id }}</a></td>
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('sale_show', { 'id': sale.id }) }}">show</a>
+                            <a href="{{ path('commonexpenses_show', { 'id': commonExpense.id }) }}">show</a>
                         </li>
                         <li>
-                            <a href="{{ path('sale_edit', { 'id': sale.id }) }}">edit</a>
+                            <a href="{{ path('commonexpenses_edit', { 'id': commonExpense.id }) }}">edit</a>
                         </li>
                     </ul>
                 </td>
@@ -33,7 +31,7 @@
 
     <ul>
         <li>
-            <a href="{{ path('sale_new') }}">Create a new sale</a>
+            <a href="{{ path('commonexpenses_new') }}">Create a new commonExpense</a>
         </li>
     </ul>
 {% endblock %}

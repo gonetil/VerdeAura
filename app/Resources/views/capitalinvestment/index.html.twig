@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Capitalinvestments list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Reason</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for capitalInvestment in capitalInvestments %}
+            <tr>
+                <td><a href="{{ path('capitalinvestment_show', { 'id': capitalInvestment.id }) }}">{{ capitalInvestment.id }}</a></td>
+                <td>{{ capitalInvestment.reason }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('capitalinvestment_show', { 'id': capitalInvestment.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('capitalinvestment_edit', { 'id': capitalInvestment.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('capitalinvestment_new') }}">Create a new capitalInvestment</a>
+        </li>
+    </ul>
+{% endblock %}

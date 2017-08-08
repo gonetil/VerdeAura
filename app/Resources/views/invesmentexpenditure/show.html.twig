@@ -1,27 +1,27 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Sale</h1>
+    <h1>Invesmentexpenditure</h1>
 
     <table>
         <tbody>
             <tr>
                 <th>Id</th>
-                <td>{{ sale.id }}</td>
+                <td>{{ invesmentExpenditure.id }}</td>
             </tr>
             <tr>
-                <th>Itemcount</th>
-                <td>{{ sale.itemCount }}</td>
+                <th>Description</th>
+                <td>{{ invesmentExpenditure.description }}</td>
             </tr>
         </tbody>
     </table>
 
     <ul>
         <li>
-            <a href="{{ path('sale_index') }}">Back to the list</a>
+            <a href="{{ path('invesmentexpenditure_index') }}">Back to the list</a>
         </li>
         <li>
-            <a href="{{ path('sale_edit', { 'id': sale.id }) }}">Edit</a>
+            <a href="{{ path('invesmentexpenditure_edit', { 'id': invesmentExpenditure.id }) }}">Edit</a>
         </li>
         <li>
             {{ form_start(delete_form) }}

@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Invesmentexpenditures list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Description</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for invesmentExpenditure in invesmentExpenditures %}
+            <tr>
+                <td><a href="{{ path('invesmentexpenditure_show', { 'id': invesmentExpenditure.id }) }}">{{ invesmentExpenditure.id }}</a></td>
+                <td>{{ invesmentExpenditure.description }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('invesmentexpenditure_show', { 'id': invesmentExpenditure.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('invesmentexpenditure_edit', { 'id': invesmentExpenditure.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('invesmentexpenditure_new') }}">Create a new invesmentExpenditure</a>
+        </li>
+    </ul>
+{% endblock %}

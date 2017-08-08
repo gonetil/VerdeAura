@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="sale")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\SaleRepository")
  */
-class Sale
+class Sale extends Movement
 {
     /**
      * @var int
@@ -21,12 +21,6 @@ class Sale
      */
     private $id;
 
-    /**
-     * @var \Date
-     *
-     * @ORM\Column(name="date", type="date")
-     */
-    private $date;
 
     /**
      * @var int
@@ -35,24 +29,12 @@ class Sale
      */
     private $itemCount;
 
-    /**
-     * @var float
-     *
-     * @ORM\Column(name="amount", type="float")
-     */
-    private $amount;
+
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="comments", type="text")
-     */
-    private $comments;
-
-    /**
-    * @ORM\ManyToOne(targetEntity="Seller",inversedBy="sales")
+    * @ORM\ManyToOne(targetEntity="Person",inversedBy="sales")
     */
-    private $seller;
+    private $person;
 
     /**
      * Get id
@@ -164,54 +146,29 @@ class Sale
      */
     public function __construct()
     {
-        $this->seller = new \Doctrine\Common\Collections\ArrayCollection();
         $this->date =  new \DateTime();
     }
 
     /**
-     * Add seller
+     * Get person
      *
-     * @param \AppBundle\Entity\Seller $seller
+     * @return person
+     */
+    public function getPerson()
+    {
+        return $this->person;
+    }
+
+    /**
+     * Set person
+     *
+     * @param \AppBundle\Entity\Person $person
      *
      * @return Sale
      */
-    public function addSeller(\AppBundle\Entity\Seller $seller)
+    public function setPerson(\AppBundle\Entity\Person $person = null)
     {
-        $this->seller[] = $seller;
-
-        return $this;
-    }
-
-    /**
-     * Remove seller
-     *
-     * @param \AppBundle\Entity\Seller $seller
-     */
-    public function removeSeller(\AppBundle\Entity\Seller $seller)
-    {
-        $this->seller->removeElement($seller);
-    }
-
-    /**
-     * Get seller
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getSeller()
-    {
-        return $this->seller;
-    }
-
-    /**
-     * Set seller
-     *
-     * @param \AppBundle\Entity\Seller $seller
-     *
-     * @return Sale
-     */
-    public function setSeller(\AppBundle\Entity\Seller $seller = null)
-    {
-        $this->seller = $seller;
+        $this->person = $person;
 
         return $this;
     }

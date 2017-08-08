@@ -14,6 +14,7 @@ services:
         # if you need to do this, you can override this setting on individual services
         public: false
 
+
     # makes classes in src/AppBundle available to be used as services
     # this creates a service per class whose id is the fully-qualified class name
     AppBundle\:
@@ -28,6 +29,13 @@ services:
         resource: '../../src/AppBundle/Controller'
         public: true
         tags: ['controller.service_arguments']
+      # ...
+    admin.capital_investment:
+        class: AppBundle\Admin\CapitalInvestmentAdmin
+        arguments: [~, AppBundle\Entity\CapitalInvestment, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Capital Investment }
+        public: true
 
     # add more services, or override services that need manual wiring
     # AppBundle\Service\ExampleService:

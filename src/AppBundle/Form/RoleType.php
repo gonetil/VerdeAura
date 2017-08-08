@@ -6,14 +6,14 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class SaleType extends AbstractType
+class RoleType extends AbstractType
 {
     /**
      * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('itemCount')->add('person');
+        $builder->add('name');
     }
     
     /**
@@ -22,7 +22,7 @@ class SaleType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Sale'
+            'data_class' => 'AppBundle\Entity\Role'
         ));
     }
 
@@ -31,7 +31,7 @@ class SaleType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'appbundle_sale';
+        return 'appbundle_role';
     }
 
 
