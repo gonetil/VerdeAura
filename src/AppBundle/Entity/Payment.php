@@ -36,5 +36,27 @@ class Payment extends Movement
     {
         return $this->id;
     }
-}
+    /**
+     * Get addressee
+     *
+     * @return person
+     */
+    public function getAddressee()
+    {
+        return $this->addressee;
+    }
 
+    /**
+     * Set addressee
+     *
+     * @param \AppBundle\Entity\Person $person
+     *
+     * @return Payment
+     */
+    public function setResponsible(\AppBundle\Entity\Person $addressee = null)
+    {
+        $this->addressee = $addressee;
+
+        return $this;
+    }
+}

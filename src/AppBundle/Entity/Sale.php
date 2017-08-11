@@ -94,29 +94,7 @@ class Sale extends Movement
         return $this->itemCount;
     }
 
-    /**
-     * Set amount
-     *
-     * @param float $amount
-     *
-     * @return Sale
-     */
-    public function setAmount($amount)
-    {
-        $this->amount = $amount;
-
-        return $this;
-    }
-
-    /**
-     * Get amount
-     *
-     * @return float
-     */
-    public function getAmount()
-    {
-        return $this->amount;
-    }
+  
 
     /**
      * Set comments

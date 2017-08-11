@@ -36,6 +36,42 @@ services:
         tags:
             - { name: sonata.admin, manager_type: orm, label: Capital Investment }
         public: true
+    admin.common_expenses:
+        class: AppBundle\Admin\CommonExpensesAdmin
+        arguments: [~, AppBundle\Entity\CommonExpenses, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Common Expenses }
+        public: true
+    admin.invesment_expenditure:
+        class: AppBundle\Admin\InvesmentExpenditureAdmin
+        arguments: [~, AppBundle\Entity\InvesmentExpenditure, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Invesment Expenditure }
+        public: true
+    admin.PaymentAdmin:
+        class: AppBundle\Admin\PaymentAdmin
+        arguments: [~, AppBundle\Entity\Payment, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Payment }
+        public: true
+    admin.SaleAdmin:
+        class: AppBundle\Admin\SaleAdmin
+        arguments: [~, AppBundle\Entity\Sale, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Sale }
+        public: true
+    admin.PersonAdmin:
+        class: AppBundle\Admin\PersonAdmin
+        arguments: [~, AppBundle\Entity\Person, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Person }
+        public: true
+    admin.RoleAdmin:
+        class: AppBundle\Admin\RoleAdmin
+        arguments: [~, AppBundle\Entity\Role, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Role }
+        public: true
 
     # add more services, or override services that need manual wiring
     # AppBundle\Service\ExampleService:

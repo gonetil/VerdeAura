@@ -43,8 +43,9 @@ class Person
      */
 
     public function __construct() {
-        $this->roles = new ArrayCollection();
+        $this->roles = new  \Doctrine\Common\Collections\ArrayCollection();
         $this->sales = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->name = "admin"; // Si no inicializo el nombre me tira error por el metodo __toString()
 
     }
 
@@ -116,6 +117,42 @@ class Person
     public function getSales()
     {
         return $this->sales;
+    }
+
+
+
+    /**
+     * Add role
+     *
+     * @param \AppBundle\Entity\Role $role
+     *
+     * @return Person
+     */
+    public function addRole(\AppBundle\Entity\Role $role)
+    {
+        $this->role[] = $role;
+
+        return $this;
+    }
+
+    /**
+     * Remove role
+     *
+     * @param \AppBundle\Entity\Role $role
+     */
+    public function removeRole(\AppBundle\Entity\Role $role)
+    {
+        $this->roles->removeElement($role);
+    }
+
+    /**
+     * Get roles
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getRoles()
+    {
+        return $this->roles;
     }
 
     public function __toString()

@@ -6,11 +6,11 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 
-class CapitalInvestmentAdmin extends AbstractAdmin
+class SaleAdmin extends AbstractAdmin
 {
     protected function configureFormFields(FormMapper $formMapper)
     {
-        $formMapper->add('dateMovement')->add('amount')->add('description')->add('reason')->add('responsible')->add('entry');
+        $formMapper->add('dateMovement')->add('amount')->add('description')->add('responsible')->add('itemCount')->add('entry');
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
@@ -20,6 +20,6 @@ class CapitalInvestmentAdmin extends AbstractAdmin
 
     protected function configureListFields(ListMapper $listMapper)
     {
-        $listMapper->addIdentifier('amount')->add('description')->add('reason')->add('responsible')->add('entry');
+        $listMapper->addIdentifier('amount')->add('description')->add('responsible')->add('entry')->add('addressee')->add('itemCount');
     }
 }

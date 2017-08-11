@@ -62,5 +62,8 @@ class Role
     {
         return $this->name;
     }
+    public function __toString()
+    {
+      return $this->getName();
+    }
 }
-
