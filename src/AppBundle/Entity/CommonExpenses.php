@@ -21,6 +21,14 @@ class CommonExpenses extends Movement
      */
     private $id;
 
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+      parent::__construct();
+      $this->entry =  false;
+    }
 
     /**
      * Get id
@@ -32,4 +40,3 @@ class CommonExpenses extends Movement
         return $this->id;
     }
 }
-

@@ -26,7 +26,7 @@ class Person
      *
      * @ORM\Column(name="name", type="string", length=255)
      */
-    private $name;
+    private $name='';
 
     /**
     * @ORM\OneToMany(targetEntity="Sale", mappedBy="responsible")
@@ -34,8 +34,8 @@ class Person
     */
     private $sales;
     /**
-     * one Person has Many Roles.
-     * @ORM\OneToMany(targetEntity="Role", mappedBy="Person")
+     * Many Persons has Many Roles.
+     * @ORM\ManyToMany(targetEntity="Role",inversedBy="persons")
      */
     private $roles;
     /**
@@ -45,7 +45,7 @@ class Person
     public function __construct() {
         $this->roles = new  \Doctrine\Common\Collections\ArrayCollection();
         $this->sales = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->name = "admin"; // Si no inicializo el nombre me tira error por el metodo __toString()
+      //  $this->name = "admin"; // Si no inicializo el nombre me tira error por el metodo __toString()
 
     }
 

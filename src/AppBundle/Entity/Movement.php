@@ -56,7 +56,14 @@ abstract class Movement
      * @ORM\ManyToOne(targetEntity="Person", inversedBy="sales")
      */
     private $responsible;
-
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->dateMovement =  new \DateTime();
+      
+    }
 
     /**
      * Get id

@@ -26,8 +26,49 @@ class Role
      *
      * @ORM\Column(name="name", type="string", length=255)
      */
-    private $name;
+    private $name='';
 
+    /**
+    * @ORM\ManyToMany(targetEntity="Person", mappedBy="roles")
+    */
+   private $persons;
+
+   public function __construct() {
+       $this->persons = new  \Doctrine\Common\Collections\ArrayCollection();
+   }
+   /**
+    * Add person
+    *
+    * @param \AppBundle\Entity\Person $person
+    *
+    * @return Role
+    */
+   public function addPerson(\AppBundle\Entity\Person $person)
+   {
+       $this->persons[] = $person;
+
+       return $this;
+   }
+
+   /**
+    * Remove person
+    *
+    * @param \AppBundle\Entity\Person $person
+    */
+   public function removePerson(\AppBundle\Entity\Person $person)
+   {
+       $this->persons->removeElement($person);
+   }
+
+   /**
+    * Get persons
+    *
+    * @return \Doctrine\Common\Collections\Collection
+    */
+   public function getPersons()
+   {
+       return $this->persons;
+   }
 
     /**
      * Get id

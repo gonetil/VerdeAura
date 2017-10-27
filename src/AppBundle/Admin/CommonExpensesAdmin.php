@@ -6,11 +6,23 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 
+
 class CommonExpensesAdmin extends AbstractAdmin
 {
-    protected function configureFormFields(FormMapper $formMapper)
+
+  public function getNewInstance()
+     {
+         $commonExpenses = parent::getNewInstance();
+         //$repository = $this->getDoctrine()->getRepository(PersonAdmin::class);
+         $repository = $this->getConfigurationPool()->getContainer()->get('doctrine')->getManager()->getRepository('AppBundle:Person');
+         $commonExpenses->setResponsible($repository->find(3));
+
+
+         return $commonExpenses;
+     }
+  protected function configureFormFields(FormMapper $formMapper)
     {
-        $formMapper->add('dateMovement')->add('amount')->add('description')->add('responsible')->add('entry');
+        $formMapper->add('dateMovement')->add('amount')->add('description')->add('responsible');
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
