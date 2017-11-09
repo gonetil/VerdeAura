@@ -7,7 +7,7 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 
 
-class CommonExpensesAdmin extends AbstractAdmin
+class CommonExpensesAdmin extends VerderAuraAbstractAdmin
 {
 
   public function getNewInstance()

@@ -6,7 +6,7 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 
-class PersonAdmin extends AbstractAdmin
+class PersonAdmin extends VerderAuraAbstractAdmin
 {
     protected function configureFormFields(FormMapper $formMapper)
     {
