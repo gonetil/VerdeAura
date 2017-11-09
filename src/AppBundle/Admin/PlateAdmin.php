@@ -6,21 +6,20 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 
-class SaleAdmin extends VerderAuraAbstractAdmin
+class PlateAdmin extends VerderAuraAbstractAdmin
 {
-
     protected function configureFormFields(FormMapper $formMapper)
     {
-        $formMapper->add('dateMovement')->add('amount')->add('description')->add('responsible')->add('itemCount')->add('entry');
+        $formMapper->add('name')->add('price');
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
-        $datagridMapper->add('dateMovement')->add('amount')->add('responsible');
+        $datagridMapper->add('price');
     }
 
     protected function configureListFields(ListMapper $listMapper)
     {
-        $listMapper->addIdentifier('amount')->add('description')->add('responsible')->add('entry')->add('addressee')->add('itemCount');
+        $listMapper->addIdentifier('name')->add('price');
     }
 }

@@ -72,6 +72,24 @@ services:
         tags:
             - { name: sonata.admin, manager_type: orm, label: Role }
         public: true
+    admin.ClientAdmin:
+        class: AppBundle\Admin\ClientAdmin
+        arguments: [~, AppBundle\Entity\Client, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Client }
+        public: true
+    admin.PlateSetAdmin:
+        class: AppBundle\Admin\PlateSetAdmin
+        arguments: [~, AppBundle\Entity\PlateSet, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: PlateSet }
+        public: true
+    admin.PlateAdmin:
+        class: AppBundle\Admin\PlateAdmin
+        arguments: [~, AppBundle\Entity\PlateSet, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Plate }
+        public: true
     VerdeAuraServices:
         class: AppBundle\Services\VerdeAuraServices
         arguments: ["@service_container"]

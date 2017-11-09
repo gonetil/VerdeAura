@@ -14,7 +14,7 @@ class CommonExpensesAdmin extends VerderAuraAbstractAdmin
      {
          $commonExpenses = parent::getNewInstance();
          //$repository = $this->getDoctrine()->getRepository(PersonAdmin::class);
-         $repository =$this->get('VerdeAuraServices')->getEntityManager()->getRepository('AppBundle:Person');
+         $repository =$this->getVerdeAura()->getEntityManager()->getRepository('AppBundle:Person');
          $commonExpenses->setResponsible($repository->find(3));
          return $commonExpenses;
      }

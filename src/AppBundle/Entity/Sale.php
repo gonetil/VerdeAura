@@ -41,6 +41,21 @@ class Sale extends Movement
      *
      * @return int
      */
+     /**
+     * Many Sales have Many PlateSets.
+     * @ORM\ManyToMany(targetEntity="PlateSet")
+     * @ORM\JoinTable(name="saless_plateSets",
+     *      joinColumns={@ORM\JoinColumn(name="sale_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="plate_set_id", referencedColumnName="id", unique=true)}
+     *      )
+     */
+    private $plate_sets;
+    public function __construct()
+   {
+       $this->plate_sets = new \Doctrine\Common\Collections\ArrayCollection();
+       $this->date =  new \DateTime();
+   }
+
     public function getId()
     {
         return $this->id;
@@ -94,7 +109,7 @@ class Sale extends Movement
         return $this->itemCount;
     }
 
-  
+
 
     /**
      * Set comments
@@ -122,10 +137,6 @@ class Sale extends Movement
     /**
      * Constructor
      */
-    public function __construct()
-    {
-        $this->date =  new \DateTime();
-    }
 
     /**
      * Get person
@@ -149,5 +160,38 @@ class Sale extends Movement
         $this->person = $person;
 
         return $this;
+    }
+    /**
+     * Add plate_set
+     *
+     * @param \AppBundle\Entity\PlateSet $plate_set
+     *
+     * @return Sale
+     */
+    public function addPlate(\AppBundle\Entity\PlateSet $plate_set)
+    {
+        $this->plate_sets[] = $plate_set;
+
+        return $this;
+    }
+
+    /**
+     * Remove plate_set
+     *
+     * @param \AppBundle\Entity\PlateSet $plate
+     */
+    public function removePlate(\AppBundle\Entity\PlateSet $plate_set)
+    {
+        $this->plate_sets->removeElement($plate_set);
+    }
+
+    /**
+     * Get plate_set
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPlateSets()
+    {
+        return $this->plate_sets;
     }
 }

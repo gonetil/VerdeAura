@@ -18,7 +18,7 @@ class VerdeAuraServices
     $this->container=$container;
   }
   public function getContainer(){
-    return $this->$container;
+    return $this->container;
   }
   public function getDoctrine()
 {
