@@ -27,7 +27,7 @@ class CommonExpenses extends Movement
     public function __construct()
     {
       parent::__construct();
-      $this->entry =  false;
+      parent::setEntry(false);
     }
 
     /**

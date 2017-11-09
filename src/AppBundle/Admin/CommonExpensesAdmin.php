@@ -14,10 +14,8 @@ class CommonExpensesAdmin extends AbstractAdmin
      {
          $commonExpenses = parent::getNewInstance();
          //$repository = $this->getDoctrine()->getRepository(PersonAdmin::class);
-         $repository = $this->getConfigurationPool()->getContainer()->get('doctrine')->getManager()->getRepository('AppBundle:Person');
+         $repository =$this->get('VerdeAuraServices')->getEntityManager()->getRepository('AppBundle:Person');
          $commonExpenses->setResponsible($repository->find(3));
-
-
          return $commonExpenses;
      }
   protected function configureFormFields(FormMapper $formMapper)

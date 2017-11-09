@@ -72,7 +72,12 @@ services:
         tags:
             - { name: sonata.admin, manager_type: orm, label: Role }
         public: true
-
+    VerdeAuraServices:
+        class: AppBundle\Services\VerdeAuraServices
+        arguments: ["@service_container"]
+        public: true
+        tags:
+          - {name: VerdeAuraServices}
     # add more services, or override services that need manual wiring
     # AppBundle\Service\ExampleService:
     #     arguments:
