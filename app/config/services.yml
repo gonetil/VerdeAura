@@ -86,7 +86,7 @@ services:
         public: true
     admin.PlateAdmin:
         class: AppBundle\Admin\PlateAdmin
-        arguments: [~, AppBundle\Entity\PlateSet, ~]
+        arguments: [~, AppBundle\Entity\Plate, ~]
         tags:
             - { name: sonata.admin, manager_type: orm, label: Plate }
         public: true
